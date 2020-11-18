@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register</title>
+    <style>
+        fieldset {
+            border: 1px solid #000;
+            border-radius: 2%;
+            margin-top: 3%
+        }
+        .login-reg-box {
+            margin: auto;
+            margin-top: 5%;
+            width: 30%;
+            padding: 10px;
+        }
+
+        .loginUsername {
+            margin-top: 5%;
+            margin-bottom: 5%
+        }
+
+        .loginRegButton {
+            margin-top: 5%;
+            float: right;
+        }
+
+        .regUsername {
+            margin-top: 5%
+        }
+
+        .tInput {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="login-reg-box">
+            <fieldset>
+                <legend>Login</legend>
+                <form action="/login" method="post">
+                    {% csrf_token %}
+                    <div class="loginUsername">
+                        <label><strong>Username:</strong></label>
+                        <input type="text" name="username" class="tInput">
+                    </div>
+                    <input type="submit" value="Login!" class="loginRegButton">
+                </form>
+            </fieldset>
+            <fieldset>
+                <legend>Register</legend>
+                <form action="/register" method="post">
+                    {% csrf_token %}
+                    <div class="regName">
+                        <label><strong>Name:</strong></label>
+                        <input type="text" name="name" class="tInput">
+                    </div>
+                    <div class="regUsername">
+                        <label><strong>Username:</strong></label>
+                        <input type="text" name="username" class="tInput">
+                    </div>
+                    <input type="submit" value="Register!" class="loginRegButton">
+                </form>
+            </fieldset>
+        </div>
+        
+    </div>
+</body>
+</html>
