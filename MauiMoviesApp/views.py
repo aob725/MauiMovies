@@ -5,6 +5,7 @@ from django.db.models import Sum, Avg
 import requests
 import math
 from django.core.paginator import Paginator
+import config
 
 
 def index(request):
@@ -62,7 +63,7 @@ def createMovie(request):
             messages.error(request, value)
         return redirect('/newMovie')
     else:
-        payload = {'t': request.POST['title'], 'y': request.POST['releaseDate'], 'apikey': 'd2bc3c9c'} 
+        payload = {'t': request.POST['title'], 'y': request.POST['releaseDate'], 'apikey': config.omdb_key} 
         r = requests.get('http://www.omdbapi.com/', params=payload)
         if r.ok == True:
             data = r.json()
@@ -104,7 +105,7 @@ def viewMovie(request, movieid):
     
     
     movie_score = movie_reviews.values('rating').aggregate(Avg('rating'))
-    payload = {'t': movieToView.title, 'y': movieToView.releaseDate, 'plot' : 'full', 'apikey': 'd2bc3c9c'} 
+    payload = {'t': movieToView.title, 'y': movieToView.releaseDate, 'plot' : 'full', 'apikey': config.omdb_key} 
     
 
     r = requests.get('http://www.omdbapi.com/', params=payload)
@@ -177,7 +178,13 @@ def search(request):
         return render(request, 'search.html', context)
 
 def message(request, reviewid):
-    print('here it is' + request.POST)
+    loggedinuser = User.objects.get(id = request.session['loggedinId'])
+    reviewToCommentOn = Review.objects.get(id = reviewid)
+    print(Review.objects.get(id = reviewid).movie["id"])
+    newMessage = ReviewComment.objects.create(message = request.POST['message'], review = reviewToCommentOn, user = loggedinuser)
+    return redirect('/movieReview/' + reviewid)
+
+def reviewPageMessage(request, reviewid):
     loggedinuser = User.objects.get(id = request.session['loggedinId'])
     reviewToCommentOn = Review.objects.get(id = reviewid)
     newMessage = ReviewComment.objects.create(message = request.POST['message'], review = reviewToCommentOn, user = loggedinuser)

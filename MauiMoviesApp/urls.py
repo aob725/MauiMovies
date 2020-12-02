@@ -18,4 +18,5 @@ urlpatterns = [
     path('deleteReview/<reviewid>', views.deleteReview),
     path('movieErrorPage', views.movieErrorPage),
     path('contact', views.contact),
+    path('reviewPageMessage/<reviewid>', views.reviewPageMessage),
 ]

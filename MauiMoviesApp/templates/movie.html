@@ -126,9 +126,11 @@
                         <h5 class="card-title" class="{{review.rating}}">{{review.rating}} / 100</h5>
                         <p class="card-text">{{review.comment}}</p>
                         <p class="card-text">{{review.user.name}}</p>
-                        <p class="card-text"><small class="text-muted">{{review.created_at}}</small></p>
+                        <p class="card-text" style="margin-bottom: 15%;"><small class="text-muted">{{review.created_at}}</small></p>
                         {% for comment in review.review_comments.all %}
-                        <div class="comments">{{comment.message}}</div>
+                            <p style="border-top: 3px black;">{{comment.message}}</p>
+                            <p class="card-text" style="vertical-align: middle; margin-bottom: 15%;"><small class="text-muted">{{comment.created_at}}
+                                    &#9830; {{comment.user.username}}</small></p>
                         {% endfor %}
                     </div>
                     
