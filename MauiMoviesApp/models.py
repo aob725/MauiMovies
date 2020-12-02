@@ -26,6 +26,18 @@ class LoginManager(models.Manager):
             user = usernameExists[0]
         return errors
 
+class MovieManagerMovies(models.Manager):
+    
+    def movieValidator(self, postData):
+        errors = {}
+        movieTitleExists = Movie.objects.filter(title = postData['title'])
+        movieYearExists = Movie.objects.filter(releaseDate = postData['releaseDate'])
+        if len(movieTitleExists) == 1 and len(movieYearExists) >= 1:
+            errors['movieAlreadyAdded'] = "This movie is already in the database."
+        if len(postData['releaseDate']) < 4:
+            errors['releaseDate'] = "Release date is required."
+        return errors
+
 class User(models.Model):
     name = models.CharField(max_length = 255)
     username = models.CharField(max_length = 255)
@@ -33,23 +45,36 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
     objects = LoginManager()
 
+
 class Movie(models.Model):
     title = models.CharField(max_length = 255)
-    releaseDate = models.DateField()
+    releaseDate = models.IntegerField()
     summary = models.CharField(max_length = 255)
     cast = models.CharField(max_length = 255)
+    genre = models.CharField(max_length = 255, null=True)
+    director = models.CharField(max_length=255, null=True)
+    writer = models.CharField(max_length=255, null=True)
+    mmc_score = models.IntegerField(null=True)
+    rotten_t = models.IntegerField(null=True)
+    imdb_score = models.IntegerField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
+    objects = MovieManagerMovies()
 
-class MovieManager(models.Model):
-    def movieValidator(self, postData):
-        errors = {}
-        movieExists = Movie.objects.filter(name = postData['title'])
+
 
 class Review(models.Model):
+    heading = models.CharField(max_length = 255, null=True)
     comment = models.TextField()
     rating = models.PositiveIntegerField()
     user = models.ForeignKey(User, related_name='user_reviews', on_delete = models.CASCADE)
     movie = models.ForeignKey(Movie, related_name='movie_reviews', on_delete = models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+
+class ReviewComment(models.Model):
+    message = models.TextField()
+    review = models.ForeignKey(Review, related_name='review_comments', on_delete = models.CASCADE)
+    user = models.ForeignKey(User, related_name='user_comments', on_delete = models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)

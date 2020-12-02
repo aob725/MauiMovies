@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/maui.jpg' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="/home">Maui Movie Central</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/home">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/newMovie">Add a Movie</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: black">Welcome, {{loggedinuser.username}}!</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="jumbotron" style="margin-top: 5%;">
+            <h1 class="display-4">Welcome to Maui Movie Central v1.0!</h1>
+            <p class="lead">Maui Movie Central was created as a fun way to log reviews amongst my friend group. At the beginning of quarantine we had a movie system where we would vote each week for what movie we wanted to watch and then rate the movies. I thought what better way than to create a local "Rotten Tomatoes" type review website.</p>
+            <p class="lead">Maui Movie Central (MMC) gets its name from Maui, a kitten my roommate and I adopted. She is a ball of energy and spends 90% of her time sprinting around, jumping, stalking, and attacking. The other 10% she spends cuddling and sleeping.</p>
+            <p class="lead">There are still many improvements to be made and I have several already in mind. Please see below and let me know if there are any features you would like to be incorporated!</p>
+            <hr class="my-4">
+            <div class="tech-used" style="width: 30%; display: inline-block; margin-left: 10%">
+                <h5>Technologies used:</h5>
+                <ul class="list-group" >
+                    <li class="list-group-item">Python</li>
+                    <li class="list-group-item">Django Framework</li>
+                    <li class="list-group-item"><a href="http://www.omdbapi.com/" style="text-decoration: none;">OMDb Api</a></li>
+                    <li class="list-group-item">Bootstrap v4.0</li>
+                    <li class="list-group-item">jQuery</li>
+                    <li class="list-group-item">HTML5</li>
+                    <li class="list-group-item">CSS3</li>
+                    <li class="list-group-item">Ajax</li>
+                </ul>
+            </div>
+            
+            <div class="improvements" style="width: 30%; display: inline-block; float: right; margin-right: 10%">
+                <h5>Improvements Required:</h5>
+                <ul class="list-group" >
+                    <li class="list-group-item">Error Handling with OMDb API Requests</li>
+                    <li class="list-group-item">Message Board</li>
+                    <li class="list-group-item">Build out User Profiles</li>
+                    <li class="list-group-item">Movie Polling System</li>
+                </ul>
+            </div>
+            <p class="lead" style="display: flex; align-items: center; justify-content: center; margin-top: 2%">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Full Portfolio</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

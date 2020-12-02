@@ -16,6 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# from MauiMoviesApp.models import User as Userrr, Movie, Review
+
+# class UserrrAdmin(admin.ModelAdmin):
+#     pass
+
+# class MovieAdmin(admin.ModelAdmin):
+#     pass
+
+# class ReviewAdmin(admin.ModelAdmin):
+#     pass
+
+# admin.site.register(Userrr, UserrrAdmin)
+# admin.site.register(Movie, MovieAdmin)
+# admin.site.register(Review, ReviewAdmin)
+
 urlpatterns = [
     path('', include('MauiMoviesApp.urls')),
     # path('admin/', admin.site.urls),

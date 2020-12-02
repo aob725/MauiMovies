@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Contact</title>
     {% load static %}
     <link rel="shortcut icon" type="image/png" href="{% static 'img/maui.jpg' %}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <style>
+</head>
+<style>
         .bg {
             background-image: url("{% static 'img/background.jpg' %}");
             background-repeat: no-repeat;
@@ -17,11 +18,9 @@
             background-position: top;
             background-attachment: fixed;
         }
-    </style>
-</head>
-
-<body class="bg">
-    <div class="wrapper" style="background-color: whitesmoke; padding: 3%; width: 85%;">
+</style>
+<body id="bg" style="background-color: whitesmoke; padding: 3%;">
+    <div class="wrapper" style="margin-left: auto; margin-right: auto;">
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="/home">Maui Movie Central</a>
@@ -43,7 +42,7 @@
                             <a class="nav-link" href="/newMovie">Add a Movie</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/contact">Contact</a>
+                            <a class="nav-link" href="#">Contact</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" style="color: black">Welcome, {{loggedinuser.username}}!</a>
@@ -55,57 +54,17 @@
                 </div>
             </div>
         </nav>
-
-        <div class="searchbar" style="margin-top: 3%;" >
-            <form action="/search" method="GET" style="width: 100%">
-                <div class="input-group mb-3">
-                    <input type="text" name="search" class="form-control" placeholder="Search for a movie!" aria-label="Search for a movie!"
-                        aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit">Search</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Title</th>
-                    <th scope="col">Cast</th>
-                    <th scope="col">Release Date</th>
-                    <th scope="col">MMC Score</th>
-                    <th scope="col">More Info</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for movie in page_obj %}
-                <tr>
-                    <th scope="row">{{movie.title}}</th>
-                    <td>{{movie.cast}}</td>
-                    <td>{{movie.releaseDate}}</td>
-                    <td>{{movie.mmc_score}}</td>
-                    <td><a href="/movie/{{movie.id}}">Go To</a></td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-        <div class="pagination justify-content-center">
-            <span class="step-links">
-                {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-                {% endif %}
-        
-                <span class="current">
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-                </span>
-        
-                {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                {% endif %}
-            </span>
+        <div class="jumbotron" style="margin-top: 5%;">
+            <h1 class="display-4" style="text-align: center;">Adam Brady</h1>
+            <p class="lead" style="text-align: center;">aob725@gmail.com</p>
+            <p class="lead" style="text-align: center;">https://github.com/aob725</p>
+            <p class="lead" style="text-align: center;">(708) 606-7880</p>
+            <br>
+            <p class="lead" style="text-align: center;">Please see my full portfolio below!</p>
+            <hr class="my-4">
+            <p class="lead" style="display: flex; align-items: center; justify-content: center; margin-top: 2%">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Full Portfolio</a>
+            </p>
         </div>
     </div>
 </body>

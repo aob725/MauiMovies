@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error in Movie Creation</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/maui.jpg' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="wrapper" style="text-align: center; margin-top: 8%; padding-bottom: 1%;">
+        <h3>There was an error creating the movie!</h3>
+        <h3>Please double check the release date and title and try again <a href="/newMovie">here</a>.</h3>
+        <h3 style="margin-top: 5%">While you're here enjoy this picture of Maui with one of her favorite toys, grape tomatoes!</h3>
+    </div>
+
+    <img src="{% static 'img/grape_tomato_maui.jpg' %}" alt="" style=" width: 25%; display: block; margin-left: auto; margin-right: auto;">
+</body>
+</html>

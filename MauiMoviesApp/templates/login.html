@@ -4,41 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login/Register</title>
-    <style>
-        fieldset {
-            border: 1px solid #000;
-            border-radius: 2%;
-            margin-top: 3%
-        }
-        .login-reg-box {
-            margin: auto;
-            margin-top: 5%;
-            width: 30%;
-            padding: 10px;
-        }
-
-        .loginUsername {
-            margin-top: 5%;
-            margin-bottom: 5%
-        }
-
-        .loginRegButton {
-            margin-top: 5%;
-            float: right;
-        }
-
-        .regUsername {
-            margin-top: 5%
-        }
-
-        .tInput {
-            float: right;
-        }
-    </style>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/maui.jpg' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <div class="wrapper">
         <div class="login-reg-box">
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color: red">{{message}}</p>
+                {% endfor %}
+            {% endif %}
             <fieldset>
                 <legend>Login</legend>
                 <form action="/login" method="post">

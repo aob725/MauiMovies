@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/maui.jpg' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="/home">Maui Movie Central</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" id="welcome" style="color: black">Welcome, {{loggedinuser.username}}!</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/newMovie">Add a Movie</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <h1>Search result found</h1>
+        <div class="movie-cards d-flex flex-wrap justify-content-center" style="margin-left: auto; margin-right:auto; width: 100%; margin-top: 5%;">
+            {% if movies %}
+            {% for m in movies %}
+            <div class="card text-white bg-dark mb-3 d-inline-block" style="max-width: 25rem; vertical-align: top; margin: 2%">
+                <div class="card-header"><a href="/movie/{{m.id}}" style="color: white">{{m.title}}</a></div>
+                <div class="card-body">
+                    <h4 class="card-title">{{m.releaseDate}}</h4>
+                    <p class="card-text">{{m.cast}}</p>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <h1>Nothing found! Add it!</h1>
+            <button><a href="/newMovie">Add Movie</a></button>
+            {% endif %}
+        </div>
+        
+    </div>
+</body>
+</html>

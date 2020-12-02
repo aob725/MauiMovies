@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/maui.jpg' %}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .bg {
+            background-image: url("{% static 'img/background.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: top;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="bg">
+    <div class="wrapper" style="background-color: whitesmoke; padding: 3%; width: 85%; margin-top: 2%">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="/home">Maui Movie Central</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" id = "welcome" style="color: black">Welcome, {{loggedinuser.username}}!</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/newMovie">Add a Movie</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="mmc-rating" style="float: right; margin-top: 3%; width: 30%">
+            <div class="movie-poster">
+                <img id="poster" width="100%" src="{{poster_url}}" alt="{{movieinfo.title}}">
+            </div>
+        </div>
+
+        <div class="movie-info" style="margin-top: 2%;">
+            <div class="title-score">
+                <div class="title-item">
+                    <legend id="movie-title">{{title}}</legend>
+                </div>
+                
+                <div class="runtime">
+                    <label>Runtime: {{runtime}}</label>
+                </div>
+            </div>
+            <br>
+            <label for=""><strong>Release Date:</strong></label>
+            <p class="info">{{movieinfo.releaseDate}}</p>
+            <label for=""><strong>Summary:</strong></label>
+            <p class="summary">{{summary}}</p>
+            <label for=""><strong>Cast:</strong></label>
+            <p class="info">{{cast}}</p>
+            <img style="width: 8%; display: block;" src="{% static 'img/mmcLogo.png' %}" alt="">
+            <label style="display: block; float: left;" id="mmc-rating-number"  class="movie_score">{{movie_score.rating__avg}}</label>
+            <p class="info"></p>
+                {% for rating in ratings %}
+                <div id="movie-poster" style="padding-top: 3.5%;;">
+                    <label> <strong>{{rating.Source}}:</strong></label>
+                    <p>{{rating.Value}}</p>
+                </div>
+                {% endfor %}
+        </div>
+
+        <div class="review">
+            <legend>Leave Review Below</legend>
+            <form action="/review/{{movieinfo.id}}" method="post">
+            {% csrf_token %}
+                <div class="form-group" id="rating-group">
+                    <label for="rating">Rating</label>
+                    <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
+                    <input id="rangeRating" class="border-0" type="range" min="0" max="100" value="50" name="rating" />
+                    <span class="font-weight-bold blue-text ml-2 mt-1">100</span>
+                    <p style="display: block;"><strong id="movieRating"></strong></p>
+                </div>
+                <div class="form-group">
+                    <label for="heading">Heading: </label>
+                    <input type="text" name="heading" id="message-header">
+                </div>
+                <div class="form-group">
+                    <label for="comment">Comment</label>
+                    <textarea id="comment-box" name="comment" class="form-control" id="" rows="4"></textarea>
+                </div>
+                <input type="submit" value="Leave Review!" class="review-button">
+            </form>
+        </div>
+        <div class="review">
+            
+            <div class="card-columns">
+                {% for review in movieinfo.movie_reviews.all %}
+                <div class="card">
+                    <p># comments: {{review.review_comments.count}}</p>
+                    <div class="card-body">
+                        {% if review.user.username == loggedinuser.username %}
+                        <a href="/deleteReview/{{review.id}}"><button class="btn btn-danger" style="float: right;">Delete</button></a>
+                        {% endif %}
+                        <h4 class="card-title"><a href="/movieReview/{{review.id}}">{{review.heading}}</a></h4>
+                        <h5 class="card-title" class="{{review.rating}}">{{review.rating}} / 100</h5>
+                        <p class="card-text">{{review.comment}}</p>
+                        <p class="card-text">{{review.user.name}}</p>
+                        <p class="card-text"><small class="text-muted">{{review.created_at}}</small></p>
+                        {% for comment in review.review_comments.all %}
+                        <div class="comments">{{comment.message}}</div>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="card-body">
+                        <form action="/message/{{review.id}}" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="message">Comment: </label>
+                                <input type="text" name="message">
+                            </div>
+                            <input type="submit" value="Reply">
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="review-message"></div>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        var slider = document.getElementById("rangeRating");
+        var output = document.getElementById("movieRating");
+        output.innerHTML = slider.value;
+
+        slider.oninput = function () {
+            output.innerHTML = this.value;
+        }
+    </script>
+
+</body>
+</html>

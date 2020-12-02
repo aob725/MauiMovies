@@ -1,0 +1,160 @@
+        /* Background image styling */
+        .bg {
+            background-image: url("{% static 'img/background.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: top;
+            background-attachment: fixed;
+        }
+        
+        /* movie.html styling */
+        .wrapper {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .movie-info {
+            margin-top: 3%;
+            margin-left: 2%;
+            width: 50%;
+        }
+
+        .summary {
+            width: 75%;
+        }
+
+        .movie-title {
+            margin-bottom: 4%;
+        }
+
+        .review {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 8%;
+            margin-bottom: 10%;
+            padding: 10px 10px 10px 10px;
+        }
+
+        .review-button {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #welcome {
+            float: left;
+        }
+        
+        .movie-title {
+            display: inline-block;
+        }
+
+        #rating-box {
+            float: right;
+            margin-left: 5%
+        }
+
+        #rangeRating {
+            width: 80%;
+        }
+
+        #comment-box {
+            width: 90%;
+        }
+
+        .title-score {
+            border-style: ridge;
+            border: 3px black;
+        }
+
+        #message-header {
+            width: 40%;
+        }
+
+        .mmcrating {
+            float: right;
+        }
+
+        #mmc-rating-label {
+            float: right;
+        }
+
+        .movie_score {
+            float: right;
+            margin-right: 20%;
+        }
+
+        /* END movie.html styling */
+
+        /* START newMovie.html styling */
+
+        .wrapper {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 10%;
+        }
+        .newMovieForm {
+            width: 45%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 8%;
+            padding: 10px 10px 10px 10px;
+        }
+
+        /* END newMovie.html styling */
+
+        /* START home.html styling */
+
+        .table {
+            border-radius: 5%;
+            margin-top: 0%;
+        }
+
+        .wrapper {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .searchbar {
+            margin-top: 5%;
+            width: 25%;
+        }
+
+        /* END home.html styling */
+
+        /*START login.html styling */
+
+        fieldset {
+            border: 1px solid #000;
+            border-radius: 2%;
+            margin-top: 3%
+        }
+        .login-reg-box {
+            margin: auto;
+            margin-top: 5%;
+            width: 30%;
+            padding: 10px;
+        }
+
+        .loginUsername {
+            margin-top: 5%;
+            margin-bottom: 5%
+        }
+
+        .loginRegButton {
+            margin-top: 5%;
+            float: right;
+        }
+
+        .regUsername {
+            margin-top: 5%
+        }
+
+        .tInput {
+            float: right;
+        }
+
+        /* END login.html styling */
