@@ -55,21 +55,9 @@
             margin-left: 5%
         }
 
-        #rangeRating {
-            width: 80%;
-        }
-
-        #comment-box {
-            width: 90%;
-        }
-
         .title-score {
             border-style: ridge;
             border: 3px black;
-        }
-
-        #message-header {
-            width: 40%;
         }
 
         .mmcrating {

@@ -48,13 +48,14 @@
         </nav>
 
         <div class="content" style="margin-top: 10%; width: 50%;">
-            <p><span style="font-size: xx-large;">Rating: {{review.rating}}</span></p>
-            <p class="display-4">{{review.heading}}</p>
+            <h5 class="display-4"><a class="text-decoration-none" style="color: grey" href="/movie/{{review.movie.id}}">{{review.movie.title}}</a></h5>
+            <h4><span class="font-weight-normal">Rating: {{review.rating}}</span></h4>
+            <h5 class="font-weight-light">{{review.heading}}</h5>
             <p>{{review.comment}}</p>
             <small class="text-muted" style="padding-top: .3%;">{{review.created_at}} &#9830; {{review.user.name}}</small>
         </div>
         <div class="reviewCommentSection" style="width: 50%; margin-top: 5%;">
-            <h3>Comments:</h3>
+            <h4 class="font-weight-normal">Comments:</h4>
             {% for message in review_comments %}
             <div class="card" style="margin-bottom: 5%">
                 <div class="card-body">
@@ -69,15 +70,4 @@
         </div>
     </div>
 </body>
-
-    <script>
-        // You could also put this code in another JavaScript file... Remember to user $(document).ready() if the script tag is included before the DOM nodes you care about...
-        $('form').submit(function (e) {
-            // preventDefault stops the default action of the event (e) from being triggered.
-            e.preventDefault();
-            $.ajax({
-                url: "/"
-            })
-        });
-    </script>
 </html>

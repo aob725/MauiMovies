@@ -91,25 +91,24 @@
         </div>
 
         <div class="review">
-            <legend>Leave Review Below</legend>
+            <legend class="font-weight-light">Leave Review Below</legend>
             <form action="/review/{{movieinfo.id}}" method="post">
             {% csrf_token %}
                 <div class="form-group" id="rating-group">
-                    <label for="rating">Rating</label>
                     <span class="font-weight-bold blue-text mr-2 mt-1">0</span>
-                    <input id="rangeRating" class="border-0" type="range" min="0" max="100" value="50" name="rating" />
+                    <input id="rangeRating" style="width:90%" class="border-0" type="range" min="0" max="100" value="50" name="rating" />
                     <span class="font-weight-bold blue-text ml-2 mt-1">100</span>
-                    <p style="display: block;"><strong id="movieRating"></strong></p>
+                    <p style="display: block; margin-right: 6.5%; width: 10%" class="display-4 text-center border border-secondary font-weight-light"><strong id="movieRating" class=""></strong></p>
                 </div>
                 <div class="form-group">
-                    <label for="heading">Heading: </label>
-                    <input type="text" name="heading" id="message-header">
+                    <label for="heading" class="font-weight-light">Heading</label>
+                    <input class="form-control" style="width: 90%;" type="text" name="heading" id="message-header">
                 </div>
                 <div class="form-group">
-                    <label for="comment">Comment</label>
+                    <label for="comment" class="font-weight-light">Comment</label>
                     <textarea id="comment-box" name="comment" class="form-control" id="" rows="4"></textarea>
                 </div>
-                <input type="submit" value="Leave Review!" class="review-button">
+                <button style="width: 30%" type="submit" class="btn btn-secondary btn-lg btn-block">Leave Review!</button>
             </form>
         </div>
         <div class="review">
@@ -122,7 +121,7 @@
                         {% if review.user.username == loggedinuser.username %}
                         <a href="/deleteReview/{{review.id}}"><button class="btn btn-danger" style="float: right;">Delete</button></a>
                         {% endif %}
-                        <h4 class="card-title"><a href="/movieReview/{{review.id}}">{{review.heading}}</a></h4>
+                        <h4 class="card-title"><a style="text-decoration: none;" href="/movieReview/{{review.id}}">{{review.heading}}</a></h4>
                         <h5 class="card-title" class="{{review.rating}}">{{review.rating}} / 100</h5>
                         <p class="card-text">{{review.comment}}</p>
                         <p class="card-text">{{review.user.name}}</p>
@@ -134,14 +133,14 @@
                         {% endfor %}
                     </div>
                     
-                    <div class="card-body">
+                    <div class="card-body"> 
                         <form action="/message/{{review.id}}" method="POST">
                             {% csrf_token %}
                             <div class="form-group">
-                                <label for="message">Comment: </label>
-                                <input type="text" name="message">
+                                <label for="message" class="font-weight-normal">Comment: </label>
+                                <textarea class="form-control" name="message" id="" cols="10" rows="1"></textarea>
                             </div>
-                            <input type="submit" value="Reply">
+                            <button style="margin: 0 auto; width: 55%;" type="submit" class="btn btn-secondary btn-lg btn-block">Leave Review!</button>
                         </form>
                     </div>
                 </div>

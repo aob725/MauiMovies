@@ -180,7 +180,6 @@ def search(request):
 def message(request, reviewid):
     loggedinuser = User.objects.get(id = request.session['loggedinId'])
     reviewToCommentOn = Review.objects.get(id = reviewid)
-    print(Review.objects.get(id = reviewid).movie["id"])
     newMessage = ReviewComment.objects.create(message = request.POST['message'], review = reviewToCommentOn, user = loggedinuser)
     return redirect('/movieReview/' + reviewid)
 
