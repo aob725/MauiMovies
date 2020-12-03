@@ -1,5 +1,7 @@
 # Maui Movie Central v1.0
 
+![MMC Logo](MauiMoviesApp/static/img/mmcLogo.png)
+
  Maui Movie Central (MMC) is a movie review website where users can add movies, review movies, and respond to reviews. Users create an account using just a username(for now).Users provide a movie title and year released and MMC pulls the rest of the information using OMDb API, an online movie API. The movie view page includes information about the movie and displays the movie poster. There, the reviewer can leave a review for the movie including a header/review title, review score, and detailed review. That score is then taken, aggregated, and averaged with the rest of the user scores for that movie which is then displayed along with the other review scores (Rotten Tomatoes, IMDb, Metacritic).
 
 # Motivation
