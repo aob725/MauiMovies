@@ -38,12 +38,24 @@
 
 # Screenshots 
 
+<img src="MauiMoviesApp/static/img/reg.png" style="width: 40%; display: inline-block; margin-left: 3%; margin-bottom: 2%;">
+<img alt="Movie Table" src="MauiMoviesApp/static/img/movie_table.png" style="width: 40%; display: inline-block; margin-left: 3%; margin-bottom: 2%;">
+<img alt="Add Movie Page" src="MauiMoviesApp/static/img/add_movie.png" style="width: 40%; display: inline-block; margin-left: 3%; margin-bottom: 2%;">
+<img alt="Movie in Table" src="MauiMoviesApp/static/img/toy_story_table.png" style="width: 40%; display: inline-block; margin-left: 3%; margin-bottom: 2%;">
+<img alt="Toy Story Page" src="MauiMoviesApp/static/img/toy_story_page.png" style="width: 40%; display: inline-block; margin-left: 3%; margin-bottom: 2%;">
+<img alt="More Movie Info" src="MauiMoviesApp/static/img/more_movie_info.png" style="width: 40%; display: inline-block; margin-left: 3%; margin-bottom: 2%;">
+<img alt="Review on Movie Page" src="MauiMoviesApp/static/img/toy_story_review.png" style="width: 40%; display: inline-block; margin-left: 3%; margin-bottom: 2%;">
+<img alt="Review Page" src="MauiMoviesApp/static/img/review_page.png" style="width: 40%; display: inline-block; margin-left: 3%; margin-bottom: 2%;">
+<img alt="Movie Reviews on Movie Info Page" src="MauiMoviesApp/static/img/movie_review_info.png" style="width: 40%; display: inline-block; margin-left: 3%; margin-bottom: 2%;">
+<img alt="Search Results" src="MauiMoviesApp/static/img/search_results.png" style="width: 40%; display: inline-block; margin-left: 3%; margin-bottom: 2%;">
+
+
 
 
 
 # Maui
 
-This project is named after my 7 month old kitten that my roommate and I adopted in May 2020. She was only 1 month old and loves to wrestle, chase, and cuddle!
+This project is named after my 7 month old kitten that my roommate and I adopted in May 2020. She was only 1 month old when we got her and loves to wrestle, chase, and cuddle!
 <p align="center">
   <img src="MauiMoviesApp/static/img/maui.jpg" style="width: 40%" />
 </p>

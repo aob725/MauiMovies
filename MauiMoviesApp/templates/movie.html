@@ -116,11 +116,11 @@
             <div class="card-columns">
                 {% for review in movieinfo.movie_reviews.all %}
                 <div class="card">
-                    <p># comments: {{review.review_comments.count}}</p>
-                    <div class="card-body">
-                        {% if review.user.username == loggedinuser.username %}
-                        <a href="/deleteReview/{{review.id}}"><button class="btn btn-danger" style="float: right;">Delete</button></a>
-                        {% endif %}
+                    <p style="float: left;"># comments: {{review.review_comments.count}}</p>
+                    {% if review.user.username == loggedinuser.username %}
+                    <a href="/deleteReview/{{review.id}}"><button class="btn btn-danger" style="float: right;">Delete</button></a>
+                    {% endif %}
+                    <div class="card-body" style="margin-top: 10%;">
                         <h4 class="card-title"><a style="text-decoration: none;" href="/movieReview/{{review.id}}">{{review.heading}}</a></h4>
                         <h5 class="card-title" class="{{review.rating}}">{{review.rating}} / 100</h5>
                         <p class="card-text">{{review.comment}}</p>

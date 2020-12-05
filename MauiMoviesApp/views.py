@@ -191,23 +191,19 @@ def reviewPageMessage(request, reviewid):
 
 def deleteMessage(request, reviewcommentid):
     loggedinuser = User.objects.get(id = request.session['loggedinId'])
-    comment_to_delete = ReviewComment.objects.get(id = reviewcommentid)
-    comment_to_delete.delete()
+    ReviewComment.objects.get(id = reviewcommentid).delete()
     return redirect('/home')
 
 def deleteReview(request, reviewid):
     loggedinuser = User.objects.get(id = request.session['loggedinId'])
-    reivew_to_delete = Review.objects.get(id = reviewid)
-    reivew_to_delete.delete()
+    Review.objects.get(id = reviewid).delete()
     return redirect('/home')
 
 def movieReview(request, reviewid):
-    loggedinuser = User.objects.get(id = request.session['loggedinId'])
-    review_comments = ReviewComment.objects.filter(review=Review.objects.get(id = reviewid))
     context = {
-        'review_comments' : review_comments,
+        'review_comments' : ReviewComment.objects.filter(review=Review.objects.get(id = reviewid)),
         'review' : Review.objects.get(id=reviewid),
-        'loggedinuser' : loggedinuser,
+        'loggedinuser' : User.objects.get(id = request.session['loggedinId']),
     }
     return render(request, 'review.html', context)
 
